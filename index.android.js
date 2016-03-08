@@ -11,7 +11,24 @@ import React, {
     View,
     Image
 } from 'react-native';
-var StatusBarAndroid = require('react-native-android-statusbar');
+import StatusBarAndroid from 'react-native-android-statusbar';
+import MK, {MKButton, MKTextField, MKColor} from 'react-native-material-kit';
+
+const StartBTN = new MKButton.Builder()
+    .withBackgroundColor("#5a411a")
+    .withOnPress(() => {
+        //TODO - Navigate
+    })
+    .withTextStyle({
+        color: '#ffda4d',
+        fontWeight: 'bold',
+    })
+    .withStyle({
+        width: 200,
+        marginTop: 10
+    })
+    .withText('Start')
+    .build();
 
 class Pingy extends Component {
 
@@ -29,7 +46,14 @@ class Pingy extends Component {
                 </Text>
                 <Text style={styles.subtitle}>
                     Test your service
-                    </Text>
+                </Text>
+                <MKTextField
+                    tintColor={'#5a411a'}
+                    highlightColor={'red'}
+                    textInputStyle={{color: '#5a411a'}}
+                    placeholder='Enter your service Name'
+                    style={styles.textField}/>
+                <StartBTN/>
             </View>
         );
     }
@@ -47,17 +71,27 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: -20,
         marginBottom: 0,
-        color: '#5a411a'
+        color: '#5a411a',
+        fontWeight: 'bold'
     },
     subtitle: {
-        fontSize: 15,
+        fontSize: 13,
         textAlign: 'center',
-        margin: 0,
+        marginTop: -2,
         color: '#5a411a'
     },
     icon: {
         width: 180,
         height: 180
+    },
+    textField: {
+        alignItems: 'center',
+        textAlign: 'center',
+        width: 200,
+        marginTop: 20,
+        marginBottom: 0,
+        borderBottomColor: '#b68433',
+        borderBottomWidth: 1,
     }
 });
 
