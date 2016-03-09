@@ -13,7 +13,7 @@ export default class Spinner extends Component {
     render() {
         return (
             <View style={styles.spinnerContainer}>
-                <LoadingSpinner strokeWidth={5} strokeColor="#5a411a" style={{width: 50, height: 50}}/>
+                <LoadingSpinner strokeWidth={3} strokeColor="#5a411a" style={{width: 30, height: 30}}/>
             </View>
         )
     }
@@ -22,9 +22,8 @@ export default class Spinner extends Component {
 const styles = StyleSheet.create({
     spinnerContainer: {
         position: 'absolute',
-        top: 0,
         left: 0,
-        bottom: 0,
+        bottom: 35,
         right: 0,
         alignItems: 'center',
         justifyContent: 'center',

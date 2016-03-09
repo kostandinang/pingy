@@ -33,3 +33,5 @@ android/app/oss.keystore
 #
 node_modules/
 npm-debug.log
+
+src/data.js
