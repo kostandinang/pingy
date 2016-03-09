@@ -13,6 +13,7 @@ import React, {
 } from 'react-native';
 import StatusBarAndroid from 'react-native-android-statusbar';
 import MK, {MKButton, MKTextField, MKColor} from 'react-native-material-kit';
+import LoadingSpinner from './src/ui/spinner.js';
 
 const StartBTN = new MKButton.Builder()
     .withBackgroundColor("#5a411a")
@@ -27,16 +28,36 @@ const StartBTN = new MKButton.Builder()
         width: 200,
         marginTop: 10
     })
-    .withText('Start')
+    .withText('Ping')
     .build();
 
 class Pingy extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            isServerActive: false
+        }
+    }
+
+    serverActive() {
+        setTimeout(() => {
+            this.setState({isServerActive: true});
+        }, 2000)
+    }
 
     componentWillMount() {
         StatusBarAndroid.setHexColor('#5a411a');
     }
 
     render() {
+        let loadingView = null;
+        if (true) {
+            loadingView = (
+                <LoadingSpinner/>
+            );
+        }
+        this.serverActive();
         return (
             <View style={styles.container}>
                 <Image source={require('./assets/imgs/logo.png')}
@@ -45,7 +66,8 @@ class Pingy extends Component {
                     Pingy
                 </Text>
                 <Text style={styles.subtitle}>
-                    Test your service
+                    Test your Service hosted
+                    @ Prius Solution
                 </Text>
                 <MKTextField
                     tintColor={'#5a411a'}
@@ -54,6 +76,7 @@ class Pingy extends Component {
                     placeholder='Enter your service Name'
                     style={styles.textField}/>
                 <StartBTN/>
+                {loadingView}
             </View>
         );
     }
@@ -75,9 +98,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     subtitle: {
-        fontSize: 13,
+        fontSize: 10,
         textAlign: 'center',
-        marginTop: -2,
+        marginTop: 2,
         color: '#5a411a'
     },
     icon: {
@@ -86,12 +109,11 @@ const styles = StyleSheet.create({
     },
     textField: {
         alignItems: 'center',
-        textAlign: 'center',
         width: 200,
         marginTop: 20,
         marginBottom: 0,
         borderBottomColor: '#b68433',
-        borderBottomWidth: 1,
+        borderBottomWidth: 1
     }
 });
 
